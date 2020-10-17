@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development  webpack serve --mode development",
+    "dev": "NODE_ENV=development webpack serve --mode development",
     "build": "webpack --mode production"
   },
   "devDependencies": {
@@ -20,6 +20,7 @@
     "eslint-plugin-react": "^7.21.4",
     "html-webpack-plugin": "^5.0.0-alpha.5",
     "prettier": "^2.1.2",
+    "raw-loader": "^4.0.2",
     "sass-loader": "^10.0.3",
     "style-loader": "^2.0.0",
     "ts-loader": "^8.0.5",
@@ -29,8 +30,16 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
+    "antd": "^4.7.0",
+    "path-browserify": "^1.0.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "styled-components": "^5.2.0"
+    "rehype-stringify": "^8.0.0",
+    "remark-parse": "^9.0.0",
+    "remark-rehype": "^8.0.0",
+    "ress": "^3.0.0",
+    "styled-components": "^5.2.0",
+    "unified": "^9.2.0"
   }
 }

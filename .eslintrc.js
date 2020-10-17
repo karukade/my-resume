@@ -29,5 +29,6 @@ module.exports = {
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
   },
 }

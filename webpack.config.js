@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const path = require("path")
 const webpack = require("webpack")
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 
@@ -17,9 +18,22 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+              importLoaders: 3,
+            },
+          },
+        ],
+      },
 
       {
-        test: /\.s?css$/,
+        test: /\.scss$/,
         exclude: /\.module\.s?css$/,
         use: [
           "style-loader",
@@ -45,6 +59,10 @@ module.exports = {
     new webpack.EnvironmentPlugin(["NODE_ENV"]),
   ],
   resolve: {
+    alias: {
+      "~": path.join(__dirname, "src"),
+    },
     extensions: [".js", ".jsx", ".ts", ".tsx"],
+    fallback: { path: require.resolve("path-browserify") },
   },
 }

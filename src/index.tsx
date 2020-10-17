@@ -1,6 +1,8 @@
 import React from "react"
 import { render } from "react-dom"
 
-import { StyledApp } from "./App"
+import { App } from "./containers/app"
+import "antd/dist/antd.css"
+//import { Test } from "./Test"
 
-render(<StyledApp />, document.getElementById("root"))
+render(<App />, document.getElementById("root"))
