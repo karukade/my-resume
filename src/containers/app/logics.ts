@@ -72,7 +72,7 @@ const getInitialState = (): StateType => {
       summary: "",
       worksVitae: {
         period: "",
-        company: "トランスコスモス",
+        company: "",
         works: [
           {
             id: createId(),

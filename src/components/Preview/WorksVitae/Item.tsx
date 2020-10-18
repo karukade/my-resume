@@ -31,13 +31,13 @@ export const Item: React.FC<Props> = memo(function Item({ work }) {
           <dd dangerouslySetInnerHTML={{ __html: tool }} />
         </dl>
       </div>
-      {work.comment && <p>{work.comment}</p>}
+      {work.comment && <p className="comment">{work.comment}</p>}
     </Wrapper>
   )
 })
 
 const Wrapper = styled.div`
-  padding-left: 20px;
+  padding: 1.5em 0 1.5em 20px;
   position: relative;
   &::before {
     content: "";
@@ -105,5 +105,11 @@ const Wrapper = styled.div`
         margin-top: 0.3em;
       }
     }
+  }
+  > .comment {
+    margin-top: 0.5em;
+  }
+  p {
+    margin-bottom: 0;
   }
 `

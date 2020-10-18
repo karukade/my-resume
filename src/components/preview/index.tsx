@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", sans-serif;
   font-size: ${fontSize.base};
   color: ${colors.font};
+  padding: 1.5em;
 `
 
 export const PreviewComponent: React.FC<{ data: StateType }> = ({ data }) => (

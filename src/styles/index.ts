@@ -7,7 +7,7 @@ export const colors = {
 } as const
 
 export const fontSize = {
-  base: "10px",
+  base: "12px",
   h2: "18px",
   large: "14px",
 } as const

@@ -43,14 +43,14 @@ export const Preview: React.FC<Props> = ({ state }) => {
     <PreviewLayout>
       <PreviewComponent data={state} />
       <div className="btn">
-        <Button onClick={onClick} type="primary">
-          PDFにする
-        </Button>
         {url && (
           <Button href={url} download="職務経歴書.pdf">
             ダウンロード
           </Button>
         )}
+        <Button onClick={onClick} type="primary">
+          PDFにする
+        </Button>
       </div>
     </PreviewLayout>
   )
@@ -59,11 +59,10 @@ export const Preview: React.FC<Props> = ({ state }) => {
 const PreviewLayout = styled.div`
   overflow: auto;
   height: 100%;
-  position: relative;
   > .btn {
-    width: 100%;
-    position: absolute;
     bottom: 30px;
+    right: 10px;
+    position: fixed;
     text-align: center;
   }
 `
