@@ -1,5 +1,10 @@
+import { useEffect } from "react"
 import { createId } from "~/utils/utils"
 import { generateStateManagementTools } from "~/utils/state"
+import {
+  getStateFromLocalStorage,
+  setStateToLocalStorage,
+} from "~/utils/localStorage"
 
 type SnsType = {
   github: string
@@ -55,54 +60,57 @@ export type StateType = {
 }
 
 const getInitialState = (): StateType => {
-  return {
-    name: "",
-    sns: {
-      github: "",
-      qiita: "",
-      portfolio: "",
-    },
-    summary: "",
-    worksVitae: {
-      period: "",
-      company: "トランスコスモス",
-      works: [
-        {
-          id: createId(),
-          period: "",
-          name: [""],
-          charge: "",
-          tool: "",
-          comment: "",
-        },
-      ],
-    },
-    education: [
-      {
-        id: createId(),
-        name: "",
-        major: "",
-        graduation: "",
+  const storedState = getStateFromLocalStorage()
+  return (
+    storedState || {
+      name: "",
+      sns: {
+        github: "",
+        qiita: "",
+        portfolio: "",
       },
-    ],
-    skillSet: [
-      {
-        id: createId(),
-        name: "",
+      summary: "",
+      worksVitae: {
         period: "",
-        overview: "",
-        skills: [
+        company: "トランスコスモス",
+        works: [
           {
             id: createId(),
             period: "",
-            name: "",
-            desc: "",
+            name: [""],
+            charge: "",
+            tool: "",
+            comment: "",
           },
         ],
       },
-    ],
-    pr: "",
-  }
+      education: [
+        {
+          id: createId(),
+          name: "",
+          major: "",
+          graduation: "",
+        },
+      ],
+      skillSet: [
+        {
+          id: createId(),
+          name: "",
+          period: "",
+          overview: "",
+          skills: [
+            {
+              id: createId(),
+              period: "",
+              name: "",
+              desc: "",
+            },
+          ],
+        },
+      ],
+      pr: "",
+    }
+  )
 }
 
 export const { useAppState, useAppActions } = generateStateManagementTools({
@@ -139,3 +147,14 @@ export const { useAppState, useAppActions } = generateStateManagementTools({
     },
   }),
 })
+
+export const useSetLocalStorage = (state: StateType) => {
+  useEffect(() => {
+    const onBeforeunload = () => {
+      console.log("beforeunload")
+      setStateToLocalStorage(state)
+    }
+    window.addEventListener("beforeunload", onBeforeunload)
+    return () => window.removeEventListener("beforeunload", onBeforeunload)
+  }, [state])
+}
