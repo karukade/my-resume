@@ -2,7 +2,8 @@ export const colors = {
   border: "#EFEFEF",
   font: "#333",
   accent: "#2D9CDB",
-  grayL: "#F4F4F4",
+  grayL: "#EFEFEF",
+  grayLL: "#f9f9f9",
   grayD: "#3C3C3C",
 } as const
 

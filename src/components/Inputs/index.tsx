@@ -1,13 +1,22 @@
 import React from "react"
-import { StateType } from "~/containers/app/logics"
-import { WorksVitae } from "./WorksVitae"
+import { StateType } from "~/containers/app/type"
+import { ConfigType } from "~/containers/inputs/config"
+import { Section } from "../Section"
+import { Form } from "./Form"
 
-export const Inputs: React.FC<{ initialValue: StateType }> = ({
-  initialValue,
-}) => {
+type Props = {
+  initialValue: StateType
+  configs: ConfigType
+}
+
+export const InputsComponent: React.FC<Props> = ({ initialValue, configs }) => {
   return (
     <>
-      <WorksVitae initialValue={initialValue.worksVitae} />
+      {configs.map((config) => (
+        <Section key={config.name} title={config.title}>
+          <Form initialValue={initialValue[config.name]} {...config} />
+        </Section>
+      ))}
     </>
   )
 }

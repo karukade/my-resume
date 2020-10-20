@@ -1,13 +1,18 @@
-import React from "react"
+import React, { memo } from "react"
 import styled from "styled-components"
 import { colors, fontSize } from "~/styles"
 
-export const Section: React.FC<{ title: string }> = ({ title, children }) => (
-  <StyledSection>
-    <H2>{title}</H2>
-    {children}
-  </StyledSection>
-)
+export const Section: React.FC<{ title: string }> = memo(function Section({
+  title,
+  children,
+}) {
+  return (
+    <StyledSection>
+      <H2>{title}</H2>
+      {children}
+    </StyledSection>
+  )
+})
 
 const H2 = styled.h2`
   font-size: ${fontSize.h2};

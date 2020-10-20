@@ -1,13 +1,11 @@
-export const createId = () => new Date().getTime()
-
-type Option = {
+type DebounceOption = {
   waitTime?: number
   useAnimationFrame?: boolean
 }
 
 export const debounce = <P extends unknown[]>(
   func: (...args: P) => void,
-  option: Option = {
+  option: DebounceOption = {
     waitTime: 200,
   }
 ): ((...args: P) => void) => {

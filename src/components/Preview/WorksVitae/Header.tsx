@@ -2,11 +2,11 @@ import React from "react"
 import styled from "styled-components"
 
 import { colors, fontSize } from "~/styles"
-import { WorksVitaeData } from "./"
+import { WorksVitaeType } from "~/containers/app/type"
 
 type Props = {
-  name: WorksVitaeData["company"]
-  period: WorksVitaeData["period"]
+  name: WorksVitaeType["company"]
+  period: WorksVitaeType["enrollmentPeriod"]
 }
 
 const StyledHeader = styled.header`

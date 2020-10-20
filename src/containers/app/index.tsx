@@ -1,6 +1,6 @@
-import React, { useEffect } from "react"
-import { Layout } from "~/components/Layout"
-import { Inputs } from "~/components/Inputs"
+import React from "react"
+import { Layout } from "~/components/layout"
+import { Inputs } from "../inputs"
 import { Preview } from "../preview"
 import { useAppState, useSetLocalStorage } from "./logics"
 

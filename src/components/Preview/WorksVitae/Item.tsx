@@ -1,12 +1,12 @@
-import React, { useEffect, useState, memo } from "react"
+import React, { memo } from "react"
 import styled from "styled-components"
 
 import { colors, fontSize } from "~/styles"
-import { WorksVitaeData } from "./"
+import { WorksVitaeType } from "~/containers/app/type"
 import { useMDToHtml } from "./logics"
 
 type Props = {
-  work: WorksVitaeData["works"][number]
+  work: WorksVitaeType["works"][number]
 }
 
 export const Item: React.FC<Props> = memo(function Item({ work }) {
@@ -15,7 +15,7 @@ export const Item: React.FC<Props> = memo(function Item({ work }) {
     <Wrapper>
       <div className="period">{work.period}</div>
       <ul className="title-list">
-        {work.name.map((name, i) => (
+        {work.workName.map((name, i) => (
           <li key={i} className="title">
             {name}
           </li>

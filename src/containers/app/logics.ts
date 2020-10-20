@@ -1,132 +1,28 @@
 import { useEffect } from "react"
-import { createId } from "~/utils/utils"
 import { generateStateManagementTools } from "~/utils/state"
 import {
   getStateFromLocalStorage,
   setStateToLocalStorage,
 } from "~/utils/localStorage"
-
-type SnsType = {
-  github: string
-  qiita: string
-  portfolio: string
-}
-
-export type WorkType = {
-  id: number
-  period: string
-  name: string[]
-  charge: string
-  tool: string
-  comment: string
-}
-
-export type WorksVitaeType = {
-  period: string
-  company: string
-  works: WorkType[]
-}
-
-type EducationType = {
-  id: number
-  name: string
-  major: string
-  graduation: string
-}
-
-type SkillType = {
-  id: number
-  name: string
-  period: string
-  desc: string
-}
-
-type SkillSetType = {
-  id: number
-  name: string
-  period: string
-  overview: string
-  skills: SkillType[]
-}
-
-export type StateType = {
-  name: string
-  sns: SnsType
-  summary: ""
-  worksVitae: WorksVitaeType
-  education: EducationType[]
-  skillSet: SkillSetType[]
-  pr: string
-}
+import { initialState } from "./data"
+import { StateType, PersonType, WorksVitaeType } from "./type"
 
 const getInitialState = (): StateType => {
   const storedState = getStateFromLocalStorage()
-  return (
-    storedState || {
-      name: "",
-      sns: {
-        github: "",
-        qiita: "",
-        portfolio: "",
-      },
-      summary: "",
-      worksVitae: {
-        period: "",
-        company: "",
-        works: [
-          {
-            id: createId(),
-            period: "",
-            name: [""],
-            charge: "",
-            tool: "",
-            comment: "",
-          },
-        ],
-      },
-      education: [
-        {
-          id: createId(),
-          name: "",
-          major: "",
-          graduation: "",
-        },
-      ],
-      skillSet: [
-        {
-          id: createId(),
-          name: "",
-          period: "",
-          overview: "",
-          skills: [
-            {
-              id: createId(),
-              period: "",
-              name: "",
-              desc: "",
-            },
-          ],
-        },
-      ],
-      pr: "",
-    }
-  )
+  return initialState
+  // return storedState || initialState
 }
 
 export const { useAppState, useAppActions } = generateStateManagementTools({
   getInitialState,
   getActions: (setState) => ({
-    setName: (name: StateType["name"]) => {
+    setState: <T extends StateType[keyof StateType]>(
+      value: T,
+      key: keyof StateType
+    ) => {
       setState((state) => ({
         ...state,
-        name,
-      }))
-    },
-
-    setSns: (sns: StateType["sns"]) => {
-      setState((state) => ({
-        ...state,
-        sns,
+        [key]: value,
       }))
     },
 
@@ -137,7 +33,7 @@ export const { useAppState, useAppActions } = generateStateManagementTools({
       }))
     },
 
-    updateWorksVitae: (worksVitae: WorksVitaeType) => {
+    setWorksVitae: (worksVitae: WorksVitaeType) => {
       setState((state) => {
         return {
           ...state,

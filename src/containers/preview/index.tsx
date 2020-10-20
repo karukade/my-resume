@@ -3,9 +3,10 @@ import styled from "styled-components"
 import { Button } from "antd"
 import { PreviewComponent } from "~/components/Preview"
 import { renderToString } from "~/utils/render"
-import { StateType } from "../app/logics"
+import { StateType } from "../app/type"
 import { createPdfUrl } from "~/utils/createPdfUrl"
 import { markDownToHtml } from "~/utils/remark"
+
 type Props = {
   state: StateType
 }
