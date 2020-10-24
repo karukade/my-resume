@@ -52,6 +52,11 @@ module.exports = {
           },
         ],
       },
+
+      {
+        test: /\.(png|jpg|gif|svg)$/i,
+        type: "asset/inline",
+      },
     ],
   },
   plugins: [

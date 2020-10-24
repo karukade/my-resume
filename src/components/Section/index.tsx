@@ -1,6 +1,6 @@
 import React, { memo } from "react"
 import styled from "styled-components"
-import { colors, fontSize } from "~/styles"
+import { colors, fontSize, space } from "~/styles"
 
 export const Section: React.FC<{ title: string }> = memo(function Section({
   title,
@@ -17,10 +17,13 @@ export const Section: React.FC<{ title: string }> = memo(function Section({
 const H2 = styled.h2`
   font-size: ${fontSize.h2};
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-bottom: 1.5em;
 `
 
 const StyledSection = styled.section`
-  padding: 26px 0;
+  padding: ${space.large} ${space.medium};
   border-top: solid 1px ${colors.border};
+  &::first-child {
+    border-top: none;
+  }
 `

@@ -7,7 +7,7 @@ import {
   SnsType,
   WorksVitaeType,
   WorkType,
-  SummaryType,
+  OverviewType,
   EducationType,
   EducationsType,
   PrType,
@@ -15,7 +15,7 @@ import {
   SkillType,
   SkillSetsType,
 } from "~/containers/app/type"
-import { RenderInputs } from "../../components/Inputs/FormFields"
+import { RenderInputs } from "../components/Inputs/FormFields"
 
 type ConfigBase<T extends string> = {
   name: keyof StateType
@@ -57,18 +57,17 @@ const person: ConfigBase<keyof PersonType | keyof SnsType> = {
   labelMap: {
     born: "生年",
     name: "名前",
-    sns: "sns",
-    github: "github",
-    qiita: "qiita",
-    portfolio: "ポートフォリオ",
+    sns: "SNS",
+    serviceName: "SNS名",
+    url: "URL",
   },
 }
 
-const summary: ConfigBase<keyof SummaryType> = {
+const summary: ConfigBase<keyof OverviewType> = {
   title: "職務経歴概要",
-  name: "summary",
+  name: "overview",
   labelMap: {
-    summary: "概要",
+    overview: "概要",
   },
   renderInputs: () => <Input.TextArea rows={5} />,
 }
@@ -119,7 +118,7 @@ const pr: ConfigBase<keyof PrType> = {
   renderInputs: () => <Input.TextArea rows={5} />,
 }
 
-const config: ConfigType = [
+export const config: ConfigType = [
   person,
   summary,
   worksVitae,
@@ -127,5 +126,3 @@ const config: ConfigType = [
   education,
   pr,
 ]
-
-export default config

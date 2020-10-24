@@ -2,15 +2,14 @@ import React, { memo } from "react"
 import styled from "styled-components"
 
 import { colors, fontSize } from "~/styles"
+import { MDPreview } from "../MDPreview"
 import { WorksVitaeType } from "~/containers/app/type"
-import { useMDToHtml } from "./logics"
 
 type Props = {
   work: WorksVitaeType["works"][number]
 }
 
 export const Item: React.FC<Props> = memo(function Item({ work }) {
-  const [charge, tool] = useMDToHtml(work.charge, work.tool)
   return (
     <Wrapper>
       <div className="period">{work.period}</div>
@@ -24,11 +23,11 @@ export const Item: React.FC<Props> = memo(function Item({ work }) {
       <div className="box-row">
         <dl className="box">
           <dt className="box-title">担当フェーズ</dt>
-          <dd dangerouslySetInnerHTML={{ __html: charge }} />
+          <MDPreview mdString={work.charge} tag="dd" />
         </dl>
         <dl className="box">
           <dt className="box-title">使用ツール</dt>
-          <dd dangerouslySetInnerHTML={{ __html: tool }} />
+          <MDPreview mdString={work.tool} tag="dd" />
         </dl>
       </div>
       {work.comment && <p className="comment">{work.comment}</p>}

@@ -9,6 +9,11 @@ export const colors = {
 
 export const fontSize = {
   base: "12px",
-  h2: "18px",
-  large: "14px",
+  h2: "20px",
+  large: "16px",
 } as const
+
+export const space = {
+  medium: "1.5em",
+  large: "2.5em",
+}

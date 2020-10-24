@@ -3,7 +3,15 @@ const endPoint =
     ? "http://localhost:5001/fir-eee-tees/us-central1/getPdf"
     : "http://localhost:5001/fir-eee-tees/us-central1/getPdf"
 
-export const createPdfUrl = async (htmlStr: string) => {
+const forceDownload = (url: string, filename: string) => {
+  const a = document.createElement("a")
+  a.href = url
+  a.download = filename
+  a.click()
+  a.remove()
+}
+
+export const downloadPdf = async (htmlStr: string, fileName: string) => {
   const blob = await fetch(endPoint, {
     method: "POST",
     headers: {
@@ -13,5 +21,5 @@ export const createPdfUrl = async (htmlStr: string) => {
       content: htmlStr,
     }),
   }).then((res) => res.blob())
-  return URL.createObjectURL(blob)
+  forceDownload(URL.createObjectURL(blob), fileName)
 }

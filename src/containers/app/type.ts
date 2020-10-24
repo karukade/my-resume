@@ -1,17 +1,16 @@
 export type SnsType = {
-  github: string
-  qiita: string
-  portfolio: string
+  serviceName: string
+  url: string
 }
 
 export type PersonType = {
   name: string
   born: string
-  sns: SnsType
+  sns: SnsType[]
 }
 
-export type SummaryType = {
-  summary: string
+export type OverviewType = {
+  overview: string
 }
 
 export type WorkType = {
@@ -61,7 +60,7 @@ export type PrType = {
 
 export type StateType = {
   person: PersonType
-  summary: SummaryType
+  overview: OverviewType
   worksVitae: WorksVitaeType
   education: EducationsType
   skillSet: SkillSetsType

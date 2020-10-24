@@ -5,12 +5,11 @@ import {
   setStateToLocalStorage,
 } from "~/utils/localStorage"
 import { initialState } from "./data"
-import { StateType, PersonType, WorksVitaeType } from "./type"
+import { StateType } from "./type"
 
 const getInitialState = (): StateType => {
   const storedState = getStateFromLocalStorage()
-  return initialState
-  // return storedState || initialState
+  return storedState || initialState
 }
 
 export const { useAppState, useAppActions } = generateStateManagementTools({
@@ -24,22 +23,6 @@ export const { useAppState, useAppActions } = generateStateManagementTools({
         ...state,
         [key]: value,
       }))
-    },
-
-    setSummary: (summary: StateType["summary"]) => {
-      setState((state) => ({
-        ...state,
-        summary,
-      }))
-    },
-
-    setWorksVitae: (worksVitae: WorksVitaeType) => {
-      setState((state) => {
-        return {
-          ...state,
-          worksVitae,
-        }
-      })
     },
   }),
 })

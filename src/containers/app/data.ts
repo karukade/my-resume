@@ -4,14 +4,15 @@ export const initialState: StateType = {
   person: {
     name: "",
     born: "",
-    sns: {
-      github: "",
-      qiita: "",
-      portfolio: "",
-    },
+    sns: [
+      {
+        serviceName: "",
+        url: "",
+      },
+    ],
   },
-  summary: {
-    summary: "",
+  overview: {
+    overview: "",
   },
   worksVitae: {
     enrollmentPeriod: "",
