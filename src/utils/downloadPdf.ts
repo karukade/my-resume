@@ -23,3 +23,10 @@ export const downloadPdf = async (htmlStr: string, fileName: string) => {
   }).then((res) => res.blob())
   forceDownload(URL.createObjectURL(blob), fileName)
 }
+
+export const downloadJson = (state: string, fileName: string) => {
+  forceDownload(
+    URL.createObjectURL(new Blob([state], { type: "application/json" })),
+    fileName
+  )
+}

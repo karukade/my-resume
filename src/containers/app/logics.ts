@@ -15,7 +15,7 @@ const getInitialState = (): StateType => {
 export const { useAppState, useAppActions } = generateStateManagementTools({
   getInitialState,
   getActions: (setState) => ({
-    setState: <T extends StateType[keyof StateType]>(
+    updateState: <T extends StateType[keyof StateType]>(
       value: T,
       key: keyof StateType
     ) => {
@@ -23,6 +23,9 @@ export const { useAppState, useAppActions } = generateStateManagementTools({
         ...state,
         [key]: value,
       }))
+    },
+    setState: (state: StateType) => {
+      setState(() => state)
     },
   }),
 })

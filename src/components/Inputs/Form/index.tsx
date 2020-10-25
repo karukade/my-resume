@@ -20,11 +20,11 @@ export const Form: React.FC<Props> = memo(function Form({
   renderInputs,
   labelMap,
 }) {
-  const { setState } = useAppActions()
+  const { updateState } = useAppActions()
   const [form] = AntdForm.useForm()
   const onUpdate = useCallback(
     debounce(() => {
-      setState(form.getFieldsValue(), name)
+      updateState(form.getFieldsValue(), name)
     }),
     []
   )
