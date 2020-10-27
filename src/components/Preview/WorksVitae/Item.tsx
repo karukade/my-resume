@@ -20,6 +20,7 @@ export const Item: React.FC<Props> = memo(function Item({ work }) {
           </li>
         ))}
       </ul>
+      {work.comment && <p className="comment">{work.comment}</p>}
       <div className="box-row">
         <dl className="box">
           <dt className="box-title">担当フェーズ</dt>
@@ -30,7 +31,6 @@ export const Item: React.FC<Props> = memo(function Item({ work }) {
           <MDPreview mdString={work.tool} tag="dd" />
         </dl>
       </div>
-      {work.comment && <p className="comment">{work.comment}</p>}
     </Wrapper>
   )
 })
@@ -107,6 +107,7 @@ const Wrapper = styled.div`
   }
   > .comment {
     margin-top: 0.5em;
+    margin-bottom: 1em;
   }
   p {
     margin-bottom: 0;
