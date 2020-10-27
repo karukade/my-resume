@@ -12,13 +12,13 @@ type Props = {
   state: StateType
 }
 
-export const Preview: React.FC<Props> = ({ state }) => {
+const Preview: React.FC<Props> = ({ state }) => {
   // const iframeRef = useRef<HTMLIFrameElement>(null)
   const { setState } = useAppActions()
   const onClick = async () => {
     const transformed = await transformState(state)
     const html = renderToString(() => <PreviewComponent data={transformed} />)
-    downloadPdf(html, "職務経歴書.pdf")
+    await downloadPdf(html, "職務経歴書.pdf")
     downloadJson(JSON.stringify(state), "resume.json")
   }
 
@@ -73,3 +73,5 @@ export const Preview: React.FC<Props> = ({ state }) => {
     </PreviewLayout>
   )
 }
+
+export default Preview

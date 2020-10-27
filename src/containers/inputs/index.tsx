@@ -8,3 +8,5 @@ export const Inputs: React.FC<{ initialValue: StateType }> = ({
   const [state] = useState(initialValue)
   return <InputsComponent initialValue={state} />
 }
+
+export default Inputs
