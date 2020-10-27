@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "NODE_ENV=dev webpack serve",
-    "build": "webpack",
+    "build": "NODE_ENV=prod webpack",
     "analyze": "NODE_ENV=analyze webpack"
   },
   "devDependencies": {
