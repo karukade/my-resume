@@ -33,7 +33,6 @@ export const { useAppState, useAppActions } = generateStateManagementTools({
 export const useSetLocalStorage = (state: StateType) => {
   useEffect(() => {
     const onBeforeunload = () => {
-      console.log("beforeunload")
       setStateToLocalStorage(state)
     }
     window.addEventListener("beforeunload", onBeforeunload)
