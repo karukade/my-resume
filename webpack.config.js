@@ -1,9 +1,19 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path")
 const webpack = require("webpack")
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 
+const plugins = [
+  new HtmlWebPackPlugin({ template: "./src/index.html" }),
+  new webpack.EnvironmentPlugin(["NODE_ENV"]),
+].concat(process.env.NODE_ENV === "analyze" ? [new BundleAnalyzerPlugin()] : [])
+
+const mode = process.env.NODE_ENV === "dev" ? "development" : "production"
+
 module.exports = {
+  mode,
   entry: "./src/index.tsx",
   module: {
     rules: [
@@ -18,6 +28,7 @@ module.exports = {
           },
         ],
       },
+
       {
         test: /\.css$/,
         use: [
@@ -25,29 +36,7 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              sourceMap: true,
-              importLoaders: 3,
-            },
-          },
-        ],
-      },
-
-      {
-        test: /\.scss$/,
-        exclude: /\.module\.s?css$/,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: {
-              sourceMap: true,
-              importLoaders: 3,
-            },
-          },
-          {
-            loader: "sass-loader",
-            options: {
-              sourceMap: true,
+              sourceMap: mode === "development",
             },
           },
         ],
@@ -59,15 +48,15 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new HtmlWebPackPlugin({ template: "./src/index.html" }),
-    new webpack.EnvironmentPlugin(["NODE_ENV"]),
-  ],
+  plugins,
   resolve: {
     alias: {
       "~": path.join(__dirname, "src"),
     },
     extensions: [".js", ".jsx", ".ts", ".tsx"],
     fallback: { path: require.resolve("path-browserify") },
+  },
+  devServer: {
+    port: 8080,
   },
 }
