@@ -13,7 +13,7 @@ import { SkillSet } from "./SkillSet"
 import { Pr } from "./Pr"
 
 import { config } from "~/config/preview"
-import { fontSize, colors, space } from "~/styles/"
+import { fontSize, colors } from "~/styles/"
 import { StateType } from "~/containers/app/type"
 
 type ComponentsMapPropsType<T extends keyof StateType> = {
@@ -64,7 +64,8 @@ export const PreviewComponent: React.FC<{ data: StateType }> = ({ data }) => (
 )
 
 const Wrapper = styled.div`
-  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", sans-serif;
+  font-family: "Noto Sans JP", "Helvetica Neue", Arial,
+    "Hiragino Kaku Gothic ProN", sans-serif;
   font-size: ${fontSize.base};
   color: ${colors.font};
   a {
